@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  height: 100vh;
+  color: #fff;
+  background-color: #1e1e1e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #1a1a1a 25%,
+    #2e2e2e 25%,
+    #2e2e2e 50%,
+    #1a1a1a 50%,
+    #1a1a1a 75%,
+    #2e2e2e 75%,
+    #2e2e2e
+  );
+  background-size: 20px 20px;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* LAYOUT */
+main {
+  position: relative;
+  width: 100rem;
+  height: 60rem;
+  background-color: #2c2c2c;
+  border: 8px solid #444;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.75);
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  filter: drop-shadow(2rem 4rem 6rem rgba(0, 0, 0, 0.75));
+  animation: mainFadeIn 1s ease-in-out;
+}
+
+@keyframes mainFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.player {
+  flex: 50%;
+  padding: 9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.75s;
+  background: linear-gradient(
+    to bottom right,
+    rgba(44, 44, 44, 0.85),
+    rgba(0, 0, 0, 0.85)
+  );
+  border-right: 5px solid #444;
+  position: relative;
+}
+
+.player::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 75%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+/* ELEMENTS */
+.name {
+  position: relative;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  color: #e63946;
+  z-index: 1;
+}
+
+.score {
+  font-size: 8rem;
+  font-weight: 900;
+  color: #e63946;
+  margin-bottom: auto;
+  z-index: 1;
+}
+
+.player--active {
+  background-color: #3c3c3c;
+  border: 2px solid #e63946;
+}
+.player--active .name {
+  font-weight: 900;
+}
+.player--active .score {
+  font-weight: 900;
+}
+
+.player--active .current {
+  opacity: 1;
+}
+
+.current {
+  background-color: #e63946;
+  opacity: 0.9;
+  border-radius: 12px;
+  color: #fff;
+  width: 65%;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.75s;
+  z-index: 1;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+}
+
+.current-label {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
+  color: #fff;
+  font-weight: 700;
+}
+
+.current-score {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+/* ABSOLUTE POSITIONED ELEMENTS */
+.btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background: none;
+  border: 2px solid #e63946;
+  font-family: inherit;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s;
+
+  background-color: #2c2c2c;
+  backdrop-filter: blur(10px);
+
+  padding: 0.7rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.btn::first-letter {
+  font-size: 2.4rem;
+  display: inline-block;
+  margin-right: 0.7rem;
+}
+
+.btn--new {
+  top: 4rem;
+}
+.btn--roll {
+  top: 39.3rem;
+}
+.btn--hold {
+  top: 46.1rem;
+}
+
+.btn:active {
+  transform: translate(-50%, 3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.7);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.dice {
+  position: absolute;
+  left: 50%;
+  top: 16.5rem;
+  transform: translateX(-50%);
+  height: 10rem;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.75);
+  background-color: #fff;
+  border-radius: 12px;
+  z-index: 1;
+}
+
+.player--winner {
+  background-color: #444;
+}
+
+.player--winner .name {
+  font-weight: 900;
+  color: #e63946;
+}
+
+.player--winner .score {
+  color: #f1faee;
+  text-shadow: 0 0 10px #e63946;
+}
